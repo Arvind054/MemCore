@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Multithreaded Search Engine Documentation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #343a40;
+            color: #fff;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        header a {
+            color: #0d6efd;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        header a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        h2, h3 {
+            color: #343a40;
+            margin-top: 30px;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        code {
+            background-color: #e9ecef;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        pre {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .project-structure pre {
+            background-color: #f1f3f5;
+        }
+        footer {
+            text-align: center;
+            margin: 40px 0;
+            color: #6c757d;
+        }
+        .github-link {
+            background-color: #0d6efd;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+        }
+        .github-link:hover {
+            background-color: #0b5ed7;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>C++ Multithreaded Search Engine Documentation</h1>
+        <a class="github-link" href="https://github.com/Arvind054/MemCore" target="_blank">View Project on GitHub</a>
+    </header>
+    <div class="container">
+        <h2>Project Overview</h2>
+        <p>This project is a <strong>high-performance text search engine</strong> developed in <strong>C++</strong>. It is capable of efficiently searching through <strong>large files</strong> using multiple string search algorithms. The project demonstrates practical application of <strong>Data Structures & Algorithms (DSA)</strong>, <strong>Operating System concepts</strong>, and performance optimization techniques.</p>
+
+        <h2>Features</h2>
+        <h3>1. Multiple Search Algorithms</h3>
+        <ul>
+            <li>Naive Search: Simple and intuitive, useful for small files or educational purposes.</li>
+            <li>Knuth-Morris-Pratt (KMP) Search: Efficient linear-time algorithm, reduces unnecessary comparisons.</li>
+            <li>Rabin-Karp Search: Hash-based search algorithm, suitable for multiple pattern searches.</li>
+        </ul>
+
+        <h3>2. Multithreading</h3>
+        <ul>
+            <li>Divides large files into <strong>chunks</strong>.</li>
+            <li>Each thread searches its chunk independently.</li>
+            <li>Reduces search time significantly for large files.</li>
+            <li>Uses <strong>mutex</strong> for safe synchronization between threads.</li>
+        </ul>
+
+        <h3>3. Benchmarking</h3>
+        <ul>
+            <li>Compares execution time of Naive, KMP, Rabin-Karp, and Multithreaded KMP.</li>
+            <li>Provides clear insights into performance improvements using multithreading.</li>
+        </ul>
+
+        <h3>4. Modular and Maintainable Design</h3>
+        <ul>
+            <li>Header (.h) files for declarations.</li>
+            <li>Implementation (.cpp) files for function logic.</li>
+            <li>Makes code clean, reusable, and professional.</li>
+        </ul>
+
+        <h3>5. Large File Support</h3>
+        <ul>
+            <li>Capable of handling GB-sized text files efficiently.</li>
+            <li>Uses memory-efficient techniques and avoids unnecessary string copies.</li>
+        </ul>
+
+        <h3>6. Thread-Safe Result Management</h3>
+        <ul>
+            <li>Results collected in a vector protected by mutex.</li>
+            <li>Prevents race conditions and ensures accuracy in multithreaded search.</li>
+        </ul>
+
+        <h3>7. Command-Line Configurable (Optional)</h3>
+        <ul>
+            <li>Can accept file path, search pattern, and number of threads as CLI arguments.</li>
+        </ul>
+
+        <h3>8. Future Enhancements</h3>
+        <ul>
+            <li>Support multiple patterns simultaneously.</li>
+            <li>Implement advanced algorithms like Boyer-Moore.</li>
+            <li>Add file indexing for repeated searches.</li>
+            <li>GUI or CLI interface for user-friendly interaction.</li>
+        </ul>
+
+        <h2>How It Works</h2>
+        <ol>
+            <li>File Reading: Reads the entire file into memory using <code>FileReader</code> class.</li>
+            <li>Algorithm Selection: Users can choose Naive, KMP, or Rabin-Karp.</li>
+            <li>Multithreaded Search: Text is split into chunks, each processed by a thread.</li>
+            <li>Synchronization: Mutex ensures thread-safe collection of results.</li>
+            <li>Benchmarking: Measures execution time for all algorithms and highlights performance differences.</li>
+        </ol>
+
+        <h2>Project Structure</h2>
+        <div class="project-structure">
+            <pre>
+SearchEngine/
+│── main.cpp                # Entry point; runs searches and benchmarks
+│── FileReader.h/cpp        # Reads text file content
+│── SearchAlgorithms.h/cpp  # Naive, KMP, and Rabin-Karp search implementations
+│── MultiThreadSearch.h/cpp # Multithreaded search using KMP
+│── Benchmark.h/cpp         # Benchmarks execution time of all search methods
+            </pre>
+        </div>
+
+        <h2>Why C++?</h2>
+        <ul>
+            <li>High performance and memory control.</li>
+            <li>Native support for multithreading (<code>std::thread</code>) and synchronization (<code>mutex</code>).</li>
+            <li>Efficient implementation of DSA algorithms like KMP and Rabin-Karp.</li>
+            <li>Widely used in performance-critical applications.</li>
+        </ul>
+
+        <h2>How to Run</h2>
+        <pre>
+g++ main.cpp FileReader.cpp SearchAlgorithms.cpp MultiThreadSearch.cpp Benchmark.cpp -pthread -o search_engine
+./search_engine
+        </pre>
+        <p>Input: File path, search pattern, number of threads (optional). Output: Execution times and pattern positions.</p>
+
+        <h2>Impact</h2>
+        <ul>
+            <li>Efficiency: Reduces search time for large files using multithreading.</li>
+            <li>Learning Value: Demonstrates practical application of DSA, OS concepts, and modular design.</li>
+            <li>Resume-Worthy: Professional, scalable, and performance-focused project.</li>
+        </ul>
+
+        <h2>Project Repository</h2>
+        <p>Explore the complete code and project files on GitHub: <a href="https://github.com/Arvind054/MemCore" target="_blank">https://github.com/Arvind054/MemCore</a></p>
+
+        <h2>Conclusion</h2>
+        <p>This project is a full-featured, high-performance C++ search engine with benchmarking and multithreading support. Its modular design, efficient algorithms, and large file handling capabilities make it a strong addition to any developer resume.</p>
+    </div>
+    <footer>
+        &copy; 2025 Arvind Choudhary | C++ Multithreaded Search Engine
+    </footer>
+</body>
+</html>
