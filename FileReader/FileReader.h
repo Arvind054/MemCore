@@ -4,6 +4,6 @@ using namespace std;
 #define FileReader_H
 class FileReader{
    public:
-   
+   static string readFile(const string& FileName);
 };
 #endif
